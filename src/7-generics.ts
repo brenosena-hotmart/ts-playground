@@ -1,22 +1,30 @@
-type UseStateTypes<T> = [T, (S: T) => void];
+type UseStateType<S> = {
+  getState: () => S;
+  setState: (payload: S) => void;
+};
 
-function useState<T>(initialState: T): UseStateTypes<T> {
-  let state: T = initialState;
+function useState<S>(initialState: S): UseStateType<S> {
+  let state: S = initialState;
 
-  function setState(newState: T): void {
+  function getState(): S {
+    return state;
+  }
+
+  function setState(newState: S): void {
     state = newState;
   }
 
-  return [state, setState];
+  return { getState, setState };
 }
 
 function myComponent() {
-  const [hero, setHero] = useState<string>('Iron Man');
-  console.log(hero);
+  const { getState, setState } = useState<string>('Iron Man');
 
-  setHero('Hulk');
+  console.log(getState());
 
-  console.log(hero);
+  setState('Hulk');
+
+  console.log(getState());
 }
 
 myComponent();

@@ -16,3 +16,5 @@ class Person {
 
 const person = new Person('Breno');
 console.log(person.name);
+person.name = 'Pablo';
+console.log(person.name);
