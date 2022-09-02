@@ -1,9 +1,22 @@
-function setState<T>(data: T) {
-  let state: T;
+type UseStateTypes<T> = [T, (S: T) => void];
 
-  state = data;
+function useState<T>(initialState: T): UseStateTypes<T> {
+  let state: T = initialState;
 
-  return state;
+  function setState(newState: T): void {
+    state = newState;
+  }
+
+  return [state, setState];
 }
 
-const hero = setState<string>('Iron Man');
+function myComponent() {
+  const [hero, setHero] = useState<string>('Iron Man');
+  console.log(hero);
+
+  setHero('Hulk');
+
+  console.log(hero);
+}
+
+myComponent();
