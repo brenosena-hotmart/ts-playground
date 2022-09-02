@@ -8,6 +8,6 @@
   let myNumber = 2;
   /**
    * myNumber = 'Text'
-   * This causes an error because myNumber is of number string because of the type inference
+   * This causes an error because myNumber is of type number because of the type inference
    */
 })();
