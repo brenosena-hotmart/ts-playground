@@ -25,3 +25,18 @@ interface Animal {
 interface Dog extends Animal {
   breed: string;
 }
+
+interface Product {
+  id: string;
+  type: 'digital' | 'physical';
+}
+
+interface DigitalProduct extends Product {
+  type: 'digital';
+  sizeInMegabytes: number;
+}
+
+interface PhysicalProduct extends Product {
+  type: 'physical';
+  weightInPounds: number;
+}
